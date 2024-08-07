@@ -1,0 +1,123 @@
+-- Find Employees with Salary Greater than 70,000
+SELECT id, name, post, salary 
+FROM employees 
+WHERE salary > 70000;
+
+-- Retrieve Employees Working as Managers
+SELECT id, name, salary 
+FROM employees 
+WHERE post LIKE '%Manager%';
+
+-- Get the Total Salary Paid to All Employees
+SELECT SUM(salary) AS total_salary 
+FROM employees;
+
+-- Find the Average Salary of Employees by Job Post
+SELECT post, AVG(salary) AS average_salary 
+FROM employees 
+GROUP BY post;
+
+-- List Employees in Descending Order of Salary
+SELECT id, name, post, salary 
+FROM employees 
+ORDER BY salary DESC;
+
+-- Count the Number of Employees in Each Job Post
+SELECT post, COUNT(*) AS number_of_employees 
+FROM employees 
+GROUP BY post;
+
+-- Retrieve Employees Who Are Either Managers or Have a Salary Above $80,000
+SELECT id, name, post, salary 
+FROM employees 
+WHERE post LIKE '%Manager%' OR salary > 80000;
+
+-- Get the Employee with the Highest Salary
+SELECT id, name, post, salary 
+FROM employees 
+ORDER BY salary DESC 
+LIMIT 1;
+
+-- Update Salary by 10% for All Employees in the 'Sales' Department
+UPDATE employees 
+SET salary = salary * 1.10 
+WHERE post LIKE '%Sales%';
+
+-- Delete Employees with a Salary Less Than $50,000
+DELETE FROM employees 
+WHERE salary < 50000;
+
+-- Find the Top 3 Highest Paid Employees in Each Department
+SELECT * 
+FROM (
+    SELECT id, name, post, salary, 
+           ROW_NUMBER() OVER (PARTITION BY post ORDER BY salary DESC) AS rank
+    FROM employees
+) AS ranked_employees
+WHERE rank <= 3;
+
+-- Calculate the Cumulative Salary for Each Employee Sorted by Salary
+SELECT id, name, post, salary,
+       SUM(salary) OVER (ORDER BY salary) AS cumulative_salary
+FROM employees;
+
+-- Find Employees Earning More than the Average Salary of Their Department
+SELECT id, name, post, salary 
+FROM employees e
+WHERE salary > (
+    SELECT AVG(salary) 
+    FROM employees 
+    WHERE post = e.post
+);
+
+-- Get the Difference Between the Highest and Lowest Salary in Each Department
+SELECT post, 
+       MAX(salary) - MIN(salary) AS salary_difference
+FROM employees
+GROUP BY post;
+
+-- Identify Employees Who Have the Same Salary
+SELECT e1.id, e1.name, e1.salary 
+FROM employees e1
+JOIN employees e2 ON e1.salary = e2.salary AND e1.id != e2.id
+ORDER BY e1.salary;
+
+-- Find Departments Where the Sum of Salaries Exceeds $300,000
+SELECT post, SUM(salary) AS total_salary
+FROM employees
+GROUP BY post
+HAVING SUM(salary) > 300000;
+
+-- Get the Employee with the Second Highest Salary
+SELECT id, name, post, salary 
+FROM employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1;
+
+-- Calculate the Percentage of Total Salary for Each Employee
+SELECT id, name, post, salary, 
+       (salary / (SELECT SUM(salary) FROM employees)) * 100 AS salary_percentage
+FROM employees;
+
+-- Identify Gaps in Employee IDs
+SELECT id + 1 AS missing_id
+FROM employees e
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM employees 
+    WHERE id = e.id + 1
+)
+ORDER BY id;
+
+-- Find Employees Whose Salary is Above the 75th Percentile
+WITH SalaryStats AS (
+    SELECT salary, 
+           NTILE(4) OVER (ORDER BY salary) AS quartile
+    FROM employees
+)
+SELECT e.id, e.name, e.salary
+FROM employees e
+JOIN SalaryStats ss ON e.salary = ss.salary
+WHERE ss.quartile = 4;
+
+
