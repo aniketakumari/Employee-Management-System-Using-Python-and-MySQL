@@ -1,0 +1,481 @@
+mysql> -- Create the database
+mysql> CREATE DATABASE emp;
+Query OK, 1 row affected (0.91 sec)
+
+mysql>
+mysql> -- Use the database
+mysql> USE emp;
+Database changed
+mysql>
+mysql> -- Create the employees table
+mysql> CREATE TABLE employees (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     post VARCHAR(100) NOT NULL,
+    ->     salary DECIMAL(10, 2) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.97 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (1, 'John Doe', 'Manager', 75000.00);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (2, 'Jane Smith', 'Assistant Manager', 68000.00);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (3, 'Robert Brown', 'Senior Developer', 90000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (4, 'Emily Davis', 'Junior Developer', 55000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (5, 'Michael Johnson', 'HR Executive', 60000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (6, 'Jessica Wilson', 'HR Manager', 85000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (7, 'David Lee', 'Sales Executive', 50000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (8, 'Sophia Garcia', 'Sales Manager', 78000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (9, 'Daniel Martinez', 'Marketing Executive', 65000.00);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (10, 'Ava Rodriguez', 'Marketing Manager', 82000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (11, 'James Hernandez', 'Product Manager', 90000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (12, 'Isabella Lopez', 'Operations Manager', 87000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (13, 'William Gonzalez', 'Finance Executive', 63000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (14, 'Mia Anderson', 'Finance Manager', 88000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (15, 'Ethan Perez', 'Business Analyst', 70000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (16, 'Amelia Thompson', 'Data Analyst', 72000.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (17, 'Alexander White', 'Network Engineer', 68000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (18, 'Charlotte Harris', 'Security Analyst', 75000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (19, 'Benjamin Clark', 'Technical Support', 52000.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employees (id, name, post, salary) VALUES (20, 'Olivia Lewis', 'Content Writer', 47000.00);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show database emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database emp' at line 1
+mysql> select * from employees;
++----+------------------+---------------------+-----------+
+| id | name             | post                | salary    |
++----+------------------+---------------------+-----------+
+|  1 | John Doe         | Manager             |  75000.00 |
+|  2 | Jane Smith       | Assistant Manager   |  68000.00 |
+|  3 | Robert Brown     | Senior Developer    |  90000.00 |
+|  4 | Emily Davis      | Junior Developer    |  55000.00 |
+|  5 | Michael Johnson  | HR Executive        |  60000.00 |
+|  6 | bhjiuy           | das fds             | 105000.00 |
+|  7 | David Lee        | Sales Executive     |  50000.00 |
+|  8 | Sophia Garcia    | Sales Manager       |  78000.00 |
+|  9 | Daniel Martinez  | Marketing Executive |  65000.00 |
+| 10 | Ava Rodriguez    | Marketing Manager   |  82000.00 |
+| 11 | James Hernandez  | Product Manager     |  90000.00 |
+| 12 | Isabella Lopez   | Operations Manager  |  87000.00 |
+| 13 | William Gonzalez | Finance Executive   |  63000.00 |
+| 14 | Mia Anderson     | Finance Manager     |  88000.00 |
+| 15 | Ethan Perez      | Business Analyst    |  70000.00 |
+| 16 | Amelia Thompson  | Data Analyst        |  72000.00 |
+| 17 | Alexander White  | Network Engineer    |  68000.00 |
+| 18 | Charlotte Harris | Security Analyst    |  75000.00 |
+| 19 | Benjamin Clark   | Technical Support   |  52000.00 |
+| 20 | Olivia Lewis     | Content Writer      |  47000.00 |
++----+------------------+---------------------+-----------+
+20 rows in set (0.04 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees
+    -> WHERE salary > 70000;
++----+------------------+--------------------+-----------+
+| id | name             | post               | salary    |
++----+------------------+--------------------+-----------+
+|  1 | John Doe         | Manager            |  75000.00 |
+|  3 | Robert Brown     | Senior Developer   |  90000.00 |
+|  6 | bhjiuy           | das fds            | 105000.00 |
+|  8 | Sophia Garcia    | Sales Manager      |  78000.00 |
+| 10 | Ava Rodriguez    | Marketing Manager  |  82000.00 |
+| 11 | James Hernandez  | Product Manager    |  90000.00 |
+| 12 | Isabella Lopez   | Operations Manager |  87000.00 |
+| 14 | Mia Anderson     | Finance Manager    |  88000.00 |
+| 16 | Amelia Thompson  | Data Analyst       |  72000.00 |
+| 18 | Charlotte Harris | Security Analyst   |  75000.00 |
++----+------------------+--------------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT id, name, salary
+    -> FROM employees
+    -> WHERE post LIKE '%Manager%';
++----+-----------------+----------+
+| id | name            | salary   |
++----+-----------------+----------+
+|  1 | John Doe        | 75000.00 |
+|  2 | Jane Smith      | 68000.00 |
+|  8 | Sophia Garcia   | 78000.00 |
+| 10 | Ava Rodriguez   | 82000.00 |
+| 11 | James Hernandez | 90000.00 |
+| 12 | Isabella Lopez  | 87000.00 |
+| 14 | Mia Anderson    | 88000.00 |
++----+-----------------+----------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT SUM(salary) AS total_salary
+    -> FROM employees;
++--------------+
+| total_salary |
++--------------+
+|   1440000.00 |
++--------------+
+1 row in set (0.11 sec)
+
+mysql> SELECT post, AVG(salary) AS average_salary
+    -> FROM employees
+    -> GROUP BY post;
++---------------------+----------------+
+| post                | average_salary |
++---------------------+----------------+
+| Manager             |   75000.000000 |
+| Assistant Manager   |   68000.000000 |
+| Senior Developer    |   90000.000000 |
+| Junior Developer    |   55000.000000 |
+| HR Executive        |   60000.000000 |
+| das fds             |  105000.000000 |
+| Sales Executive     |   50000.000000 |
+| Sales Manager       |   78000.000000 |
+| Marketing Executive |   65000.000000 |
+| Marketing Manager   |   82000.000000 |
+| Product Manager     |   90000.000000 |
+| Operations Manager  |   87000.000000 |
+| Finance Executive   |   63000.000000 |
+| Finance Manager     |   88000.000000 |
+| Business Analyst    |   70000.000000 |
+| Data Analyst        |   72000.000000 |
+| Network Engineer    |   68000.000000 |
+| Security Analyst    |   75000.000000 |
+| Technical Support   |   52000.000000 |
+| Content Writer      |   47000.000000 |
++---------------------+----------------+
+20 rows in set (0.20 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees
+    -> ORDER BY salary DESC;
++----+------------------+---------------------+-----------+
+| id | name             | post                | salary    |
++----+------------------+---------------------+-----------+
+|  6 | bhjiuy           | das fds             | 105000.00 |
+|  3 | Robert Brown     | Senior Developer    |  90000.00 |
+| 11 | James Hernandez  | Product Manager     |  90000.00 |
+| 14 | Mia Anderson     | Finance Manager     |  88000.00 |
+| 12 | Isabella Lopez   | Operations Manager  |  87000.00 |
+| 10 | Ava Rodriguez    | Marketing Manager   |  82000.00 |
+|  8 | Sophia Garcia    | Sales Manager       |  78000.00 |
+|  1 | John Doe         | Manager             |  75000.00 |
+| 18 | Charlotte Harris | Security Analyst    |  75000.00 |
+| 16 | Amelia Thompson  | Data Analyst        |  72000.00 |
+| 15 | Ethan Perez      | Business Analyst    |  70000.00 |
+|  2 | Jane Smith       | Assistant Manager   |  68000.00 |
+| 17 | Alexander White  | Network Engineer    |  68000.00 |
+|  9 | Daniel Martinez  | Marketing Executive |  65000.00 |
+| 13 | William Gonzalez | Finance Executive   |  63000.00 |
+|  5 | Michael Johnson  | HR Executive        |  60000.00 |
+|  4 | Emily Davis      | Junior Developer    |  55000.00 |
+| 19 | Benjamin Clark   | Technical Support   |  52000.00 |
+|  7 | David Lee        | Sales Executive     |  50000.00 |
+| 20 | Olivia Lewis     | Content Writer      |  47000.00 |
++----+------------------+---------------------+-----------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT post, COUNT(*) AS number_of_employees
+    -> FROM employees
+    -> GROUP BY post;
++---------------------+---------------------+
+| post                | number_of_employees |
++---------------------+---------------------+
+| Manager             |                   1 |
+| Assistant Manager   |                   1 |
+| Senior Developer    |                   1 |
+| Junior Developer    |                   1 |
+| HR Executive        |                   1 |
+| das fds             |                   1 |
+| Sales Executive     |                   1 |
+| Sales Manager       |                   1 |
+| Marketing Executive |                   1 |
+| Marketing Manager   |                   1 |
+| Product Manager     |                   1 |
+| Operations Manager  |                   1 |
+| Finance Executive   |                   1 |
+| Finance Manager     |                   1 |
+| Business Analyst    |                   1 |
+| Data Analyst        |                   1 |
+| Network Engineer    |                   1 |
+| Security Analyst    |                   1 |
+| Technical Support   |                   1 |
+| Content Writer      |                   1 |
++---------------------+---------------------+
+20 rows in set (0.01 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees
+    -> WHERE post LIKE '%Manager%' OR salary > 80000;
++----+-----------------+--------------------+-----------+
+| id | name            | post               | salary    |
++----+-----------------+--------------------+-----------+
+|  1 | John Doe        | Manager            |  75000.00 |
+|  2 | Jane Smith      | Assistant Manager  |  68000.00 |
+|  3 | Robert Brown    | Senior Developer   |  90000.00 |
+|  6 | bhjiuy          | das fds            | 105000.00 |
+|  8 | Sophia Garcia   | Sales Manager      |  78000.00 |
+| 10 | Ava Rodriguez   | Marketing Manager  |  82000.00 |
+| 11 | James Hernandez | Product Manager    |  90000.00 |
+| 12 | Isabella Lopez  | Operations Manager |  87000.00 |
+| 14 | Mia Anderson    | Finance Manager    |  88000.00 |
++----+-----------------+--------------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees
+    -> ORDER BY salary DESC
+    -> LIMIT 1;
++----+--------+---------+-----------+
+| id | name   | post    | salary    |
++----+--------+---------+-----------+
+|  6 | bhjiuy | das fds | 105000.00 |
++----+--------+---------+-----------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE employees
+    -> SET salary = salary * 1.10
+    -> WHERE post LIKE '%Sales%';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> DELETE FROM employees
+    -> WHERE salary < 50000;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employees;
++----+------------------+---------------------+-----------+
+| id | name             | post                | salary    |
++----+------------------+---------------------+-----------+
+|  1 | John Doe         | Manager             |  75000.00 |
+|  2 | Jane Smith       | Assistant Manager   |  68000.00 |
+|  3 | Robert Brown     | Senior Developer    |  90000.00 |
+|  4 | Emily Davis      | Junior Developer    |  55000.00 |
+|  5 | Michael Johnson  | HR Executive        |  60000.00 |
+|  6 | bhjiuy           | das fds             | 105000.00 |
+|  7 | David Lee        | Sales Executive     |  55000.00 |
+|  8 | Sophia Garcia    | Sales Manager       |  85800.00 |
+|  9 | Daniel Martinez  | Marketing Executive |  65000.00 |
+| 10 | Ava Rodriguez    | Marketing Manager   |  82000.00 |
+| 11 | James Hernandez  | Product Manager     |  90000.00 |
+| 12 | Isabella Lopez   | Operations Manager  |  87000.00 |
+| 13 | William Gonzalez | Finance Executive   |  63000.00 |
+| 14 | Mia Anderson     | Finance Manager     |  88000.00 |
+| 15 | Ethan Perez      | Business Analyst    |  70000.00 |
+| 16 | Amelia Thompson  | Data Analyst        |  72000.00 |
+| 17 | Alexander White  | Network Engineer    |  68000.00 |
+| 18 | Charlotte Harris | Security Analyst    |  75000.00 |
+| 19 | Benjamin Clark   | Technical Support   |  52000.00 |
++----+------------------+---------------------+-----------+
+19 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM (
+    ->     SELECT id, name, post, salary,
+    ->            ROW_NUMBER() OVER (PARTITION BY post ORDER BY salary DESC) AS rank
+    ->     FROM employees
+    -> ) AS ranked_employees
+    -> WHERE rank <= 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rank
+    FROM employees
+) AS ranked_employees
+WHERE rank <= 3' at line 4
+mysql>
+mysql> SELECT id, name, post, salary,
+    ->        SUM(salary) OVER (ORDER BY salary) AS cumulative_salary
+    -> FROM employees;
++----+------------------+---------------------+-----------+-------------------+
+| id | name             | post                | salary    | cumulative_salary |
++----+------------------+---------------------+-----------+-------------------+
+| 19 | Benjamin Clark   | Technical Support   |  52000.00 |          52000.00 |
+|  4 | Emily Davis      | Junior Developer    |  55000.00 |         162000.00 |
+|  7 | David Lee        | Sales Executive     |  55000.00 |         162000.00 |
+|  5 | Michael Johnson  | HR Executive        |  60000.00 |         222000.00 |
+| 13 | William Gonzalez | Finance Executive   |  63000.00 |         285000.00 |
+|  9 | Daniel Martinez  | Marketing Executive |  65000.00 |         350000.00 |
+|  2 | Jane Smith       | Assistant Manager   |  68000.00 |         486000.00 |
+| 17 | Alexander White  | Network Engineer    |  68000.00 |         486000.00 |
+| 15 | Ethan Perez      | Business Analyst    |  70000.00 |         556000.00 |
+| 16 | Amelia Thompson  | Data Analyst        |  72000.00 |         628000.00 |
+|  1 | John Doe         | Manager             |  75000.00 |         778000.00 |
+| 18 | Charlotte Harris | Security Analyst    |  75000.00 |         778000.00 |
+| 10 | Ava Rodriguez    | Marketing Manager   |  82000.00 |         860000.00 |
+|  8 | Sophia Garcia    | Sales Manager       |  85800.00 |         945800.00 |
+| 12 | Isabella Lopez   | Operations Manager  |  87000.00 |        1032800.00 |
+| 14 | Mia Anderson     | Finance Manager     |  88000.00 |        1120800.00 |
+|  3 | Robert Brown     | Senior Developer    |  90000.00 |        1300800.00 |
+| 11 | James Hernandez  | Product Manager     |  90000.00 |        1300800.00 |
+|  6 | bhjiuy           | das fds             | 105000.00 |        1405800.00 |
++----+------------------+---------------------+-----------+-------------------+
+19 rows in set (0.01 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees e
+    -> WHERE salary > (
+    ->     SELECT AVG(salary)
+    ->     FROM employees
+    ->     WHERE post = e.post
+    -> );
+Empty set (0.01 sec)
+
+mysql> SELECT post,
+    ->        MAX(salary) - MIN(salary) AS salary_difference
+    -> FROM employees
+    -> GROUP BY post;
++---------------------+-------------------+
+| post                | salary_difference |
++---------------------+-------------------+
+| Manager             |              0.00 |
+| Assistant Manager   |              0.00 |
+| Senior Developer    |              0.00 |
+| Junior Developer    |              0.00 |
+| HR Executive        |              0.00 |
+| das fds             |              0.00 |
+| Sales Executive     |              0.00 |
+| Sales Manager       |              0.00 |
+| Marketing Executive |              0.00 |
+| Marketing Manager   |              0.00 |
+| Product Manager     |              0.00 |
+| Operations Manager  |              0.00 |
+| Finance Executive   |              0.00 |
+| Finance Manager     |              0.00 |
+| Business Analyst    |              0.00 |
+| Data Analyst        |              0.00 |
+| Network Engineer    |              0.00 |
+| Security Analyst    |              0.00 |
+| Technical Support   |              0.00 |
++---------------------+-------------------+
+19 rows in set (0.02 sec)
+
+mysql> SELECT e1.id, e1.name, e1.salary
+    -> FROM employees e1
+    -> JOIN employees e2 ON e1.salary = e2.salary AND e1.id != e2.id
+    -> ORDER BY e1.salary;
++----+------------------+----------+
+| id | name             | salary   |
++----+------------------+----------+
+|  7 | David Lee        | 55000.00 |
+|  4 | Emily Davis      | 55000.00 |
+| 17 | Alexander White  | 68000.00 |
+|  2 | Jane Smith       | 68000.00 |
+| 18 | Charlotte Harris | 75000.00 |
+|  1 | John Doe         | 75000.00 |
+| 11 | James Hernandez  | 90000.00 |
+|  3 | Robert Brown     | 90000.00 |
++----+------------------+----------+
+8 rows in set (0.10 sec)
+
+mysql> SELECT post, SUM(salary) AS total_salary
+    -> FROM employees
+    -> GROUP BY post
+    -> HAVING SUM(salary) > 300000;
+Empty set (0.00 sec)
+
+mysql> SELECT id, name, post, salary
+    -> FROM employees
+    -> ORDER BY salary DESC
+    -> LIMIT 1 OFFSET 1;
++----+--------------+------------------+----------+
+| id | name         | post             | salary   |
++----+--------------+------------------+----------+
+|  3 | Robert Brown | Senior Developer | 90000.00 |
++----+--------------+------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT id, name, post, salary,
+    ->        (salary / (SELECT SUM(salary) FROM employees)) * 100 AS salary_percentage
+    -> FROM employees;
++----+------------------+---------------------+-----------+-------------------+
+| id | name             | post                | salary    | salary_percentage |
++----+------------------+---------------------+-----------+-------------------+
+|  1 | John Doe         | Manager             |  75000.00 |          5.335041 |
+|  2 | Jane Smith       | Assistant Manager   |  68000.00 |          4.837103 |
+|  3 | Robert Brown     | Senior Developer    |  90000.00 |          6.402049 |
+|  4 | Emily Davis      | Junior Developer    |  55000.00 |          3.912363 |
+|  5 | Michael Johnson  | HR Executive        |  60000.00 |          4.268032 |
+|  6 | bhjiuy           | das fds             | 105000.00 |          7.469057 |
+|  7 | David Lee        | Sales Executive     |  55000.00 |          3.912363 |
+|  8 | Sophia Garcia    | Sales Manager       |  85800.00 |          6.103286 |
+|  9 | Daniel Martinez  | Marketing Executive |  65000.00 |          4.623702 |
+| 10 | Ava Rodriguez    | Marketing Manager   |  82000.00 |          5.832978 |
+| 11 | James Hernandez  | Product Manager     |  90000.00 |          6.402049 |
+| 12 | Isabella Lopez   | Operations Manager  |  87000.00 |          6.188647 |
+| 13 | William Gonzalez | Finance Executive   |  63000.00 |          4.481434 |
+| 14 | Mia Anderson     | Finance Manager     |  88000.00 |          6.259781 |
+| 15 | Ethan Perez      | Business Analyst    |  70000.00 |          4.979371 |
+| 16 | Amelia Thompson  | Data Analyst        |  72000.00 |          5.121639 |
+| 17 | Alexander White  | Network Engineer    |  68000.00 |          4.837103 |
+| 18 | Charlotte Harris | Security Analyst    |  75000.00 |          5.335041 |
+| 19 | Benjamin Clark   | Technical Support   |  52000.00 |          3.698961 |
++----+------------------+---------------------+-----------+-------------------+
+19 rows in set (0.00 sec)
+
+mysql> SELECT id + 1 AS missing_id
+    -> FROM employees e
+    -> WHERE NOT EXISTS (
+    ->     SELECT 1
+    ->     FROM employees
+    ->     WHERE id = e.id + 1
+    -> )
+    -> ORDER BY id;
++------------+
+| missing_id |
++------------+
+|         20 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> WITH SalaryStats AS (
+    ->     SELECT salary,
+    ->            NTILE(4) OVER (ORDER BY salary) AS quartile
+    ->     FROM employees
+    -> )
+    -> SELECT e.id, e.name, e.salary
+    -> FROM employees e
+    -> JOIN SalaryStats ss ON e.salary = ss.salary
+    -> WHERE ss.quartile = 4;
++----+-----------------+-----------+
+| id | name            | salary    |
++----+-----------------+-----------+
+|  3 | Robert Brown    |  90000.00 |
+|  3 | Robert Brown    |  90000.00 |
+|  6 | bhjiuy          | 105000.00 |
+| 11 | James Hernandez |  90000.00 |
+| 11 | James Hernandez |  90000.00 |
+| 14 | Mia Anderson    |  88000.00 |
++----+-----------------+-----------+
+6 rows in set (0.01 sec)
+
+mysql>
